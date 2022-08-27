@@ -1,16 +1,10 @@
-<?php
-require dirname(__DIR__, 1) . '/vendor/autoload.php';
-use Codenixsv\CoinGeckoApi\CoinGeckoClient;
-$start_time = microtime(true);
-$client = new CoinGeckoClient();
-$cache = new Memcache;
-$cache->connect('127.0.0.1', 11211);
-?>
 <a href="./converter.php">Converter</a>
 <a href="./price_list.php">Price List</a>
 <br>
 <br>
 <?php
+include 'config.php';
+$start_time = microtime(true);
 $json = $cache->get('course_list');
 if ($json !== false) {
     $result = json_decode($json);

@@ -1,11 +1,3 @@
-<?php
-require dirname(__DIR__, 1) . '/vendor/autoload.php';
-use Codenixsv\CoinGeckoApi\CoinGeckoClient;
-$start_time = microtime(true);
-$client = new CoinGeckoClient();
-$cache = new Memcache;
-$cache->connect('127.0.0.1', 11211)
-?>
     <a href="./converter.php">Converter</a>
     <a href="./price_list.php">Price List</a>
     <br>
@@ -23,6 +15,8 @@ $cache->connect('127.0.0.1', 11211)
         </label><br>
     </form>
 <?php
+include 'config.php';
+$start_time = microtime(true);
 $words = [];
 $token = '';
 $coin_name = '';
@@ -40,7 +34,7 @@ if (!empty($_POST['input'])) {
     } else {
         echo 'Кеш просрочился, загружаем новый курс, ожидайте...<br>';
     }
-    $words = explode(' ', $_POST['input']);
+    $words = explode(' ', trim($_POST['input']));
 } else {
     echo 'Пусто!';
     exit;
