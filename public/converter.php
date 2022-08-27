@@ -27,6 +27,10 @@ $words = [];
 $token = '';
 $coin_name = '';
 if (!empty($_POST['input'])) {
+    if ($_POST['input'] === 'course_list') {
+        echo 'Данное слово зарезервировано!';
+        exit;
+    }
     if ($cache->get($_POST['input']) !== false) {
         $result = explode('/', $cache->get($_POST['input']));
         echo 'Итого: '. $result[0] .' ('.$result[1].')';

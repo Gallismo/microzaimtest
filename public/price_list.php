@@ -11,7 +11,7 @@ $cache->connect('127.0.0.1', 11211);
 <br>
 <br>
 <?php
-$json = $cache->get('WVROV01GbFhjejA9');
+$json = $cache->get('course_list');
 if ($json !== false) {
     $result = json_decode($json);
     echo 'Загружаю из кеша...<br>';
@@ -40,7 +40,7 @@ try {
     }
     $end_time = microtime(true);
     echo 'Время выполнения скрипта: '. round($end_time - $start_time, 4) .' сек.';
-    $cache->set('WVROV01GbFhjejA9', json_encode($result), false, 60);
+    $cache->set('course_list', json_encode($result), false, 60);
 } catch (Exception $e) {
     var_dump($e);
 }
