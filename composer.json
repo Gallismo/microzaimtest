@@ -1,0 +1,8 @@
+{
+    "require": {
+        "codenix-sv/coingecko-api": "^1.0",
+      "ext-json": "*",
+      "ext-memcache": "*",
+      "ext-memcached": "*"
+    }
+}
